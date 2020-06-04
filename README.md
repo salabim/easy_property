@@ -36,6 +36,18 @@ With easy_property, you can also create a combined getter/setter decorator:
                 self._a = val[0]
             return self._a
 ```
-Finally, it is possible to add a docstring to the property, with the @documenter decorator.
+Finally, it is possible to add a docstring to the property, with the @documenter decorator:
+```
+    Class Demo:
+        def __init__(self, val):
+            self.a = val
+        @getter
+        def a(self):
+            return self._a
+        @documenter:
+        def a(self):
+            return "this is the docstring of Demo.a
+```
 
-Although this might not be always a good solution, I think in many cases this will make an easier way to define properties.
+Although this might not be always a good solution, I think in many cases this will make it easier and more intuitive to
+define properties.
