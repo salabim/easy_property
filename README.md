@@ -1,7 +1,7 @@
 # easy_property
 Intuitive way to define a Python property with getter, setter, deleter, gestter_setter and documenter decorators
 After some experimentation, I found a way to avoid the @myfunc.setter syntax.
-In the easy_property module (code at the bottom), one can define the decorators
+In the easy_property module, one can define the decorators
 
 - getter
 - setter
