@@ -6,6 +6,7 @@ In the easy_property module, one can define the decorators
 - getter
 - setter
 - deleted
+
 , that can be used as in:
 ```
     Class Demo:
