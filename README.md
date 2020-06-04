@@ -16,7 +16,7 @@ In the easy_property module (code at the bottom), one can define the decorators
             return self._a
         @setter
         def a(self, val):
-            self._a = all
+            self._a = val
         @deleter
         def a(self):
             print('delete')
