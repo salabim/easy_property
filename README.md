@@ -46,7 +46,7 @@ Finally, it is possible to add a docstring to the property, with the @documenter
             return self._a
         @documenter:
         def a(self):
-            return "this is the docstring of Demo.a
+            return "this is the docstring of Demo.a"
 ```
 
 Although this might not be always a good solution, I think in many cases this will make it easier and more intuitive to
