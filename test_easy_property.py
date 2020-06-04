@@ -73,20 +73,11 @@ class EasyPropertyTest(unittest.TestCase):
             def field(self):
                 return "this is the documenter docstring"
 
-        def getfield():
-            return x.field
-
-        def setfield():
-            x.field = 6
-
-        def delfield():
-            del x.field
-
         x = X(5)
         self.assertEqual(x.field, 5)
         x.field = 6
         self.assertEqual(x.field, 6)
-        delfield()
+        del x.field
         self.assertEqual(X.field.__doc__, "this is the documenter docstring")
 
     """Test for all four decorators in reverse order """
@@ -113,20 +104,11 @@ class EasyPropertyTest(unittest.TestCase):
                 """this is the getter docstring"""
                 return self._field
 
-        def getfield():
-            return x.field
-
-        def setfield():
-            x.field = 6
-
-        def delfield():
-            del x.field
-
         x = X(5)
         self.assertEqual(x.field, 5)
         x.field = 6
         self.assertEqual(x.field, 6)
-        delfield()
+        del x.field
         self.assertEqual(X.field.__doc__, "this is the documenter docstring")
 
     """Test for getter_setter"""
@@ -141,12 +123,6 @@ class EasyPropertyTest(unittest.TestCase):
                 if value:
                     self._field = value[0]
                 return self._field
-
-        def getfield():
-            return x.field
-
-        def setfield():
-            x.field = 6
 
         x = X(5)
         self.assertEqual(x.field, 5)
