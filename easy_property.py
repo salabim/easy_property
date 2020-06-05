@@ -33,10 +33,10 @@ E.g. instead of
         def __init__(self, val):
             self.a = val
         @getter_setter
-        def a(self, val):
-            if val:
-                self._a = val[0]
-            return self._a
+        def a(self, val=None):
+            if val is None:
+                return self._a
+            self._a = val
 
 Likewise, @deleter can be used to specify deleter.
 
@@ -70,28 +70,20 @@ Class Demo:
 """
 import functools
 
-__version__ = "0.0.1"
-
-refs = ["getter", "setter", "deleter", "documenter"]
-_info = {ref: None for ref in refs + ["qualname"]}
-
+__version__ = "0.0.2"
 
 def action(f, frefs):
-    if f.__qualname__ == _info["qualname"]:
-        for fref in frefs.split("_"):
-            if _info[fref] is not None:
-                raise AttributeError(fref + " decorator defined twice")
+    if f.__qualname__ == action.qualname:
+        if any (action.f[fref] is not None for fref in frefs.split("_")):
+            raise AttributeError(f"decorator defined twice")
     else:
-        for ref in refs:
-            _info[ref] = None
-    _info["qualname"] = f.__qualname__
-    for fref in frefs.split("_"):
-        _info[fref] = f
-    return property(*(_info[ref] if (ref != "documenter" or _info[ref] is None) else _info[ref](0) for ref in refs))
+        action.f.update({}.fromkeys(action.f, None))  # reset all values to None
+        action.qualname = f.__qualname__
+    action.f.update({}.fromkeys(frefs.split('_'), f))  # set all frefs values to f
+    return property(*(action.f[ref] if (ref != "documenter" or action.f[ref] is None) else action.f[ref](0) for ref in action.f))
 
+action.qualname = None
+action.f = dict.fromkeys(["getter", "setter", "deleter", "documenter"], None)
 
-getter = functools.partial(action, frefs="getter")
-setter = functools.partial(action, frefs="setter")
-deleter = functools.partial(action, frefs="deleter")
-documenter = functools.partial(action, frefs="documenter")
-getter_setter = functools.partial(action, frefs="getter_setter")
+globals().update({fref: functools.partial(action, frefs=fref) for fref in {**action.f, 'getter_setter': None}})
+
