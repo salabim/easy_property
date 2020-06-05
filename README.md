@@ -32,10 +32,10 @@ With easy_property, you can also create a combined getter/setter decorator:
         def __init__(self, val):
             self.a = val
         @getter_setter
-        def a(self, val):
-            if val:
-                self._a = val[0]
-            return self._a
+        def a(self, val=None):
+            if val is None:
+                return self._a
+            self._a = val
 ```
 Finally, it is possible to add a docstring to the property, with the @documenter decorator:
 ```
