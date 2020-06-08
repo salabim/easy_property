@@ -1,7 +1,7 @@
 # easy_property
 Intuitive way to define a Python property with getter, setter, deleter, gestter_setter and documenter decorators
 
-Normally when you want to define a property that has a getter and a setter, you have to something like
+Normally when you want to define a property that has a getter and a setter, you have to do something like
 
 ```
     Class Demo:
@@ -42,7 +42,7 @@ With the easy_property module, one can use the decorators
 In contrast with an ordinary property, the order of getter, setter and deleter is not important.
 And it is even possible to define a setter only (without a getter), just in case.
 
-With easy_property, you can also create a combined getter/setter decorator:
+With easy_property, you can even create a combined getter/setter decorator:
 ```
     Class Demo:
         def __init__(self, val):
