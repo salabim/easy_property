@@ -15,7 +15,7 @@ Normally when you want to define a property that has a getter and a setter, you 
         def a(self, val):
             self._a = val
 ```
-The `a.setter` is not eally a nice syntax, and hard to remember.
+IMHO, the `@a.setter` is an ugly decorator, and hard to remember.
 
 With the easy_property module, one can use the decorators
 
