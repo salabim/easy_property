@@ -4,7 +4,7 @@ Intuitive way to define a Python property with getter, setter, deleter, getter_s
 Normally when you want to define a property that has a getter and a setter, you have to do something like
 
 ```
-    Class Demo:
+    class Demo:
         def __init__(self, val):
             self.a = val
         @property
@@ -25,7 +25,7 @@ With the easy_property module, one can use the decorators
 
 , as in:
 ```
-    Class Demo:
+    class Demo:
         def __init__(self, val):
             self.a = val
         @getter
@@ -44,7 +44,7 @@ And it is even possible to define a setter only (without a getter), just in case
 
 With easy_property, you can even create a combined getter/setter decorator:
 ```
-    Class Demo:
+    class Demo:
         def __init__(self, val):
             self.a = val
         @getter_setter
@@ -55,7 +55,7 @@ With easy_property, you can even create a combined getter/setter decorator:
 ```
 Finally, it is possible to add a docstring to the property, with the @documenter decorator:
 ```
-    Class Demo:
+    class Demo:
         def __init__(self, val):
             self.a = val
         @getter
